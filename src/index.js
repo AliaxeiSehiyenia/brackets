@@ -2,25 +2,24 @@ module.exports = function check(str, bracketsConfig) {
   const bracketOpen = bracketsConfig.map((elem) => elem[0]);
   const bracketClose = bracketsConfig.map((elem) => elem[1]);
   const arr = [];
-  const strIn = str.split("");
 
-  if (strIn.length % 2 !== 0) {
+  if (str.length % 2 !== 0) {
     return false;
   }
-  for (let i = 0; i <= strIn.length - 1; i++) {
-    if (bracketOpen.includes(strIn[i])) {
-      arr.push(strIn[i]);
+  for (let i = 0; i <= str.length - 1; i++) {
+    if (bracketOpen.includes(str[i])) {
+      arr.push(str[i]);
     }
     
-    if (bracketClose.indexOf(strIn[i]) === bracketOpen.indexOf(arr[arr.length - 1])) {
+    if (bracketClose.indexOf(str[i]) === bracketOpen.indexOf(arr[arr.length - 1])) {
       arr.pop();
     }
 
-    if (bracketOpen.includes(strIn[i]) && bracketClose.includes(strIn[i])) {
-      if (arr[arr.length - 1] === strIn[i]) {
+    if (bracketOpen.includes(str[i]) && bracketClose.includes(str[i])) {
+      if (arr[arr.length - 1] === str[i]) {
         arr.pop();
       } else {
-        arr.push(strIn[i]);
+        arr.push(str[i]);
       }
     }
   }
